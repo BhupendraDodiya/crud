@@ -12,6 +12,9 @@ def login(request):
 def signup(request):
     return render(request,"signup.html")
 
+def wel(request):
+    return render(request,"welcome.html")
+
 # create signup form
 def registration(request):
     if request.method == 'POST':
@@ -37,7 +40,7 @@ def login_form(request):
            obj = User.objects.get(contact=contact)
            password = obj.password
            if check_password(l_password, password):
-                return redirect("/table/")
+                return redirect("/wel/")
            else:
             return HttpResponse('password incorrect')
     else:
@@ -46,3 +49,20 @@ def login_form(request):
 def table(request):
     data = User.objects.all()
     return render(request,'table.html',{"data":data})
+
+#create edit button
+
+def update_view(request, uid):
+    res=User.objects.get(id=uid)
+    return render(request,'update.html',{'person':res})
+
+#use update data
+def update_form_data(request):
+    if request.method == 'POST':
+        uid = request.POST['uid']
+        name = request.POST['name']
+        email = request.POST['email']
+        contact = request.POST['contact']
+        DOB = request.POST['DOB']
+        User.objects.filter(id=uid).update(name=name,email=email,contact=contact,DOB=DOB)
+        return redirect('/table/')
