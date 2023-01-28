@@ -66,3 +66,8 @@ def update_form_data(request):
         DOB = request.POST['DOB']
         User.objects.filter(id=uid).update(name=name,email=email,contact=contact,DOB=DOB)
         return redirect('/table/')
+    
+#create delete button
+def delete(request,pk):
+    use = User.objects.filter(id=pk).delete()
+    return redirect('/table/')
