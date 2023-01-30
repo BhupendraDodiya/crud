@@ -10,6 +10,13 @@
     <div class="signup-box">
       <h1>Sign Up</h1>
       <h4>It's free and only takes a minute</h4>
+      {% if messages %}
+        {% for message in messages %}               
+          <div class=" alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>Message: </strong> {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
       <form method='post' action='/registration/'>
         {% csrf_token %}
         <label>First Name</label>
@@ -22,9 +29,10 @@
         <label>Password</label>
         <input type="password" placeholder="" name="password"/>
         <label>Contact number</label>
-        <input type="number" placeholder="" name="contact" /><br><br>
+        <input type="number" name="contact" /><br><br>
         <input type="submit" value="submit" />
-    </form>
+      </form>
+                
       <p>
         By clicking the Sign Up button,you agree to our <br />
         <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
