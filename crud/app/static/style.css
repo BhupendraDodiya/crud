@@ -1,8 +1,6 @@
-body {
-    background-color: #344a72;
-    font-family: "Roboto", sans-serif;
+  body{
+    background-color: rgb(97, 202, 27);
   }
-  
   .signup-box {
     width: 360px;
     height: 620px;
@@ -70,9 +68,4 @@ body {
   .para-2 a {
     color: #49c1a2;
   }
-  .w
-  {
-    color: rgb(150, 38, 38);
-    font-size: 100px;
-    text-align: center;
-  }
+  
